@@ -15,6 +15,17 @@ const router = new VueRouter({
     {
       path: "/userHome",
       component: userHome,
+      redirect: "/viewTickets",
+      children: [
+        {
+          path: "/purchase",
+          component: () => import("@/views/home/purchase.vue"),
+        },
+        {
+          path: "/viewTickets",
+          component: () => import("@/views/home/viewTickets.vue"),
+        },
+      ],
     },
   ],
 });

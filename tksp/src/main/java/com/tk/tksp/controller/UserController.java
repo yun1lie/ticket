@@ -1,6 +1,7 @@
 package com.tk.tksp.controller;
 
 import com.tk.tksp.entity.User;
+import com.tk.tksp.entity.ViewTicket;
 import com.tk.tksp.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +19,20 @@ public class UserController {
     @PostMapping("/login")
     public String getUserByID(@RequestBody User user) {
 //        如果密码正确
-        List<User> userList = userMapper.selectByID(user);
-        if (user.getUserKey().equals(userList.get(0).getUserKey())) {
-            return "userID-" + userList.get(0).getUserID() + "-passengerID-" + userList.get(0).getPassengerID() + "-jurisdiction-" + userList.get(0).getJurisdiction();
+        try {
+            List<User> userList = userMapper.selectByID(user);
+            if (user.getUserKey().equals(userList.get(0).getUserKey())) {
+                return "userID-" + userList.get(0).getUserID() + "-passengerID-" + userList.get(0).getPassengerID() + "-jurisdiction-" + userList.get(0).getJurisdiction();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return "false";
     }
+
+    @PostMapping("/viewTickets")
+    public List<ViewTicket> viewTickets(@RequestBody User user) {
+        return userMapper.selectTicket(user);
+    }
+
 }
