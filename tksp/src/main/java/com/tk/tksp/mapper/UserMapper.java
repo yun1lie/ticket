@@ -1,10 +1,13 @@
 package com.tk.tksp.mapper;
 
+import com.tk.tksp.entity.BuyTrain;
 import com.tk.tksp.entity.User;
 import com.tk.tksp.entity.ViewTicket;
 import com.tk.tksp.entity.train;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -17,10 +20,22 @@ public interface UserMapper {
 
 
     //查询用户订单
-    @Select("select tpID, passengerID, ticketID, money, trainId, seat from ticketpassenger, ticket where ticketpassenger.passengerID = #{passengerID} AND ticketpassenger.ticketID = ticket.ID")
+    @Select("select tpID, passengerID, ticketID, money, trainId, seat from ticketpassenger where ticketpassenger.passengerID = #{passengerID} ")
     List<ViewTicket> selectTicket(User user);
 
     //查询车辆信息
     @Select("select * from train")
     List<train> selectTrain();
+
+    //车辆一等车位置减一
+    @Update("UPDATE train SET firstSeat = firstSeat - 1 WHERE TrainID = #{trainID}")
+    int buyFirst(BuyTrain buyTrain);
+
+    //二等车位置减1
+    @Update("UPDATE train SET secondSeat = secondSeat - 1 WHERE TrainID = #{trainID}")
+    int buySecond(BuyTrain buyTrain);
+
+    //ticket+1
+    @Insert("INSERT INTO `ticket`.`ticket`(`money`, `trainId`, `seat`) VALUES (#{money}, #{trainID}, #{seat})")
+    int insertTicket(BuyTrain buyTrain);
 }

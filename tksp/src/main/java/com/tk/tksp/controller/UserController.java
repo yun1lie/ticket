@@ -1,5 +1,6 @@
 package com.tk.tksp.controller;
 
+import com.tk.tksp.entity.BuyTrain;
 import com.tk.tksp.entity.User;
 import com.tk.tksp.entity.ViewTicket;
 import com.tk.tksp.entity.train;
@@ -38,8 +39,20 @@ public class UserController {
     }
 
     @GetMapping("/selectTrain")
-    public List<train> selectTrain(){
+    public List<train> selectTrain() {
         return userMapper.selectTrain();
+    }
+
+    @PostMapping("/BuyTicket")
+    public int BuyTicket(@RequestBody BuyTrain buyTrain) {
+        if (buyTrain.getSeat().equals("first")) {
+            userMapper.buyFirst(buyTrain);
+            return 1;
+        } else if (buyTrain.getSeat().equals("second")) {
+            userMapper.buySecond(buyTrain);
+            return 1;
+        }
+        return 0;
     }
 
 }
