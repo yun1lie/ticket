@@ -9,11 +9,11 @@
       label-width="80px"
     >
       <h2>login</h2>
-      <el-form-item label="username" prop="username">
-        <el-input v-model="form.username"></el-input>
+      <el-form-item label="userID" prop="userID">
+        <el-input v-model="form.userID"></el-input>
       </el-form-item>
-      <el-form-item label="password" prop="password">
-        <el-input v-model="form.password"></el-input>
+      <el-form-item label="userKey" prop="userKey">
+        <el-input v-model="form.userKey"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">login</el-button>
@@ -23,19 +23,18 @@
 </template>
 
 <script>
+import { login } from "@/api";
 export default {
   data() {
     return {
       form: {
-        username: "",
-        password: "",
+        userID: "",
+        userKey: "",
       },
       rules: {
-        username: [
-          { required: true, message: "enter username", trigger: "blur" },
-        ],
-        password: [
-          { required: true, message: "enter password", trigger: "blur" },
+        userID: [{ required: true, message: "enter userID", trigger: "blur" }],
+        userKey: [
+          { required: true, message: "enter userKey", trigger: "blur" },
         ],
       },
     };
@@ -43,6 +42,28 @@ export default {
   methods: {
     onSubmit() {
       console.log("submit!");
+      login(this.form).then((data) => {
+        console.log(data.data);
+        if (data.data == false) {
+          alert("log failed");
+          location.reload();
+        } else {
+          var s = data.data.split("-");
+          console.log(s[0]);
+          var userI = {
+            userID: s[1],
+            passengerID: s[3],
+            jurisdiction: s[5],
+          };
+          console.log(userI);
+          sessionStorage.setItem("logUser", JSON.stringify(userI));
+          if (userI.jurisdiction == 1) {
+            this.$router.push("/userHome");
+          } else if (userI.jurisdiction == 0) {
+            this.$router.push("/adminHome");
+          }
+        }
+      });
     },
   },
 };
