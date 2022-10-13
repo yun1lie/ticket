@@ -2,8 +2,10 @@ package com.tk.tksp.controller;
 
 import com.tk.tksp.entity.User;
 import com.tk.tksp.entity.ViewTicket;
+import com.tk.tksp.entity.train;
 import com.tk.tksp.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +35,11 @@ public class UserController {
     @PostMapping("/viewTickets")
     public List<ViewTicket> viewTickets(@RequestBody User user) {
         return userMapper.selectTicket(user);
+    }
+
+    @GetMapping("/selectTrain")
+    public List<train> selectTrain(){
+        return userMapper.selectTrain();
     }
 
 }

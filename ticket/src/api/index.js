@@ -6,3 +6,7 @@ export const login = (data) => {
 export const viewTickets = (data) => {
   return requests({ url: "/viewTickets", method: "post", data });
 };
+
+export const getTrain = () => {
+  return requests({ url: "/selectTrain", method: "get" });
+};

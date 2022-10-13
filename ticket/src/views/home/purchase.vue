@@ -2,19 +2,25 @@
   <div class="purchase">
     <h3>Purchase tickets</h3>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="tpID" label="tpID" width="180"> </el-table-column>
-      <el-table-column prop="passengerID" label="passengerID" width="180">
+      <el-table-column prop="trainID" label="trainID"> </el-table-column>
+      <el-table-column prop="trainType" label="trainType" width=130px> </el-table-column>
+      <el-table-column prop="startStation" label="startStation" width=130px>
       </el-table-column>
-      <el-table-column prop="ticketID" label="ticketID"> </el-table-column>
-      <el-table-column prop="money" label="money"> </el-table-column
-      ><el-table-column prop="trainId" label="trainId"> </el-table-column
-      ><el-table-column prop="seat" label="seat"> </el-table-column>
+      <el-table-column prop="arriveStation" label="arriveStation"  width=130px>
+      </el-table-column><el-table-column prop="startTime" label="startTime"  width=130px>
+      </el-table-column>
+      <el-table-column prop="arriveTime" label="arriveTime"  width=130px> </el-table-column
+      ><el-table-column prop="firstSeat" label="firstSeat"  width=130px> </el-table-column
+      ><el-table-column prop="secondSeat" label="secondSeat" width=130px> </el-table-column>
+      <el-table-column prop="firstPrice" label="firstPrice" width=130px> </el-table-column
+      ><el-table-column prop="secondPrice" label="secondPrice" width=130px>
+      </el-table-column>
       <el-table-column label="opertaion" width="360px">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
             >Buy a first-class car</el-button
           >
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
+          <el-button size="mini" @click="handleEdit2(scope.$index, scope.row)"
             >Buy a second-class car</el-button
           >
         </template>
@@ -24,12 +30,19 @@
 </template>
 
 <script>
+import { getTrain } from "@/api";
 export default {
+  created() {
+    getTrain().then((data) => {
+      console.log(data.data);
+      this.tableData = data.data;
+    });
+  },
   methods: {
     handleEdit(index, row) {
       console.log(index, row);
     },
-    handleDelete(index, row) {
+    handleEdit2(index, row) {
       console.log(index, row);
     },
   },
