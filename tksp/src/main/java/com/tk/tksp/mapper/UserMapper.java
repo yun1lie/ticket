@@ -20,7 +20,7 @@ public interface UserMapper {
 
 
     //查询用户订单
-    @Select("select tpID, passengerID, ticketID, money, trainId, seat from ticketpassenger where ticketpassenger.passengerID = #{passengerID} ")
+    @Select("select tpID, passengerID,  money, trainId, seat from ticketpassenger where ticketpassenger.passengerID = #{passengerID} ")
     List<ViewTicket> selectTicket(User user);
 
     //查询车辆信息
@@ -36,6 +36,6 @@ public interface UserMapper {
     int buySecond(BuyTrain buyTrain);
 
     //ticket+1
-    @Insert("INSERT INTO `ticket`.`ticket`(`money`, `trainId`, `seat`) VALUES (#{money}, #{trainID}, #{seat})")
+    @Insert("INSERT INTO `ticket`.`ticketpassenger`(`passengerID`, `money`, `trainId`, `seat`) VALUES (#{passengerID}, #{money}, #{trainID}, #{seat})")
     int insertTicket(BuyTrain buyTrain);
 }

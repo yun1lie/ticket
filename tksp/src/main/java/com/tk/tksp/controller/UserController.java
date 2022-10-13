@@ -47,9 +47,12 @@ public class UserController {
     public int BuyTicket(@RequestBody BuyTrain buyTrain) {
         if (buyTrain.getSeat().equals("first")) {
             userMapper.buyFirst(buyTrain);
+            //用户票增加一张
+            userMapper.insertTicket(buyTrain);
             return 1;
         } else if (buyTrain.getSeat().equals("second")) {
             userMapper.buySecond(buyTrain);
+            userMapper.insertTicket(buyTrain);
             return 1;
         }
         return 0;

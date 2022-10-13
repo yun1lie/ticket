@@ -10,3 +10,7 @@ export const viewTickets = (data) => {
 export const getTrain = () => {
   return requests({ url: "/selectTrain", method: "get" });
 };
+
+export const buyFirst = (data) => {
+  return requests({ url: "/BuyTicket", method: "post", data });
+};

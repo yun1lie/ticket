@@ -4,7 +4,7 @@
       <el-table-column prop="tpID" label="tpID" width="180"> </el-table-column>
       <el-table-column prop="passengerID" label="passengerID" width="180">
       </el-table-column>
-      <el-table-column prop="ticketID" label="ticketID"> </el-table-column>
+
       <el-table-column prop="money" label="money"> </el-table-column
       ><el-table-column prop="trainId" label="trainId"> </el-table-column
       ><el-table-column prop="seat" label="seat"> </el-table-column>
