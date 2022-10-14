@@ -14,3 +14,8 @@ export const getTrain = () => {
 export const buyFirst = (data) => {
   return requests({ url: "/BuyTicket", method: "post", data });
 };
+
+//删除车辆
+export const deleteTrain = (data) => {
+  return requests({ url: "/deleteTrain", method: "post", data });
+};

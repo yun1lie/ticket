@@ -13,8 +13,29 @@ const router = new VueRouter({
       component: login,
     },
     {
+      path: "/editTrain/:trainID",
+      name: "editTrain",
+      component: () => import("@/views/home/editTrain.vue"),
+    },
+    {
+      path: "/deleteTrain/:trainID",
+      name: "deleteTrain",
+      component: () => import("@/views/home/deleteTrain.vue"),
+    },
+    {
       path: "/adminHome",
       component: () => import("@/views/home/adminHome.vue"),
+      redirect: "/TranManagement",
+      children: [
+        {
+          path: "/TranManagement",
+          component: () => import("@/views/home/TranManagement.vue"),
+        },
+        {
+          path: "/StationManagement",
+          component: () => import("@/views/home/StationManagement.vue"),
+        },
+      ],
     },
     {
       path: "/userHome",
