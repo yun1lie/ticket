@@ -1,9 +1,6 @@
 package com.tk.tksp.controller;
 
-import com.tk.tksp.entity.BuyTrain;
-import com.tk.tksp.entity.User;
-import com.tk.tksp.entity.ViewTicket;
-import com.tk.tksp.entity.train;
+import com.tk.tksp.entity.*;
 import com.tk.tksp.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,6 +64,16 @@ public class UserController {
             System.out.println(e);
         }
         return 0;
+    }
+
+    @PostMapping("/finOneTrain")
+    public List<train> findOneTrain(@RequestBody train tr) {
+        return userMapper.selectTrainByID(tr);
+    }
+
+    @PostMapping("/updateTrain")
+    public int updateTrain(@RequestBody train tr){
+        return userMapper.updateTrain(tr);
     }
 
 }

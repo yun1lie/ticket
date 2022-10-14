@@ -19,3 +19,13 @@ export const buyFirst = (data) => {
 export const deleteTrain = (data) => {
   return requests({ url: "/deleteTrain", method: "post", data });
 };
+
+//查询单个车辆信息
+export const findOneTrain = (data) => {
+  return requests({ url: "/finOneTrain", method: "post", data });
+};
+
+//修改车辆信息
+export const updateTrain = (data) => {
+  return requests({ url: "/updateTrain", method: "post", data });
+};
