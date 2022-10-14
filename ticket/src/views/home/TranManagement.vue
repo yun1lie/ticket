@@ -40,6 +40,7 @@
 
 <script>
 import { getTrain } from "@/api";
+import { deleteTrain } from "@/api";
 export default {
   created() {
     getTrain().then((data) => {
@@ -59,12 +60,22 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-    //   this.$router.push({
-    //     name: "deleteTrain",
-    //     params: {
-    //       trainID: row.trainID,
-    //     },
-    //   });
+      deleteTrain(row).then((data) => {
+        console.log(data.data);
+        if (data.data == 0) {
+          alert("delete failed");
+        } else {
+          alert("delete Sucessed!");
+          location.reload();
+        }
+      });
+
+      //   this.$router.push({
+      //     name: "deleteTrain",
+      //     params: {
+      //       trainID: row.trainID,
+      //     },
+      //   });
     },
   },
   data() {

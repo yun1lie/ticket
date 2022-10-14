@@ -4,10 +4,7 @@ import com.tk.tksp.entity.BuyTrain;
 import com.tk.tksp.entity.User;
 import com.tk.tksp.entity.ViewTicket;
 import com.tk.tksp.entity.train;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -38,4 +35,9 @@ public interface UserMapper {
     //ticket+1
     @Insert("INSERT INTO `ticket`.`ticketpassenger`(`passengerID`, `money`, `trainId`, `seat`) VALUES (#{passengerID}, #{money}, #{trainID}, #{seat})")
     int insertTicket(BuyTrain buyTrain);
+
+
+    //删除车辆
+    @Delete("DELETE FROM `ticket`.`train` WHERE `TrainID` = #{TrainID}")
+    int deleteTrain(train tr);
 }

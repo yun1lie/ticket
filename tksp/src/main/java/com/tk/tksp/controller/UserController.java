@@ -58,4 +58,15 @@ public class UserController {
         return 0;
     }
 
+    @PostMapping("/deleteTrain")
+    public int deleteTrain(@RequestBody train tr) {
+        try {
+            return userMapper.deleteTrain(tr);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
 }
