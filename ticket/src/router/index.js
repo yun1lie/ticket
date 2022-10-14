@@ -13,6 +13,10 @@ const router = new VueRouter({
       component: login,
     },
     {
+      path: "/adminHome",
+      component: () => import("@/views/home/adminHome.vue"),
+    },
+    {
       path: "/userHome",
       component: userHome,
       redirect: "/viewTickets",
