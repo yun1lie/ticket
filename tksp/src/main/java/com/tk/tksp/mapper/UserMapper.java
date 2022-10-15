@@ -62,4 +62,8 @@ public interface UserMapper {
     @Update("UPDATE `ticket`.`station` SET `Region` = #{Region} ,`City` = #{City} WHERE `stationName` = #{stationName}")
     int updateStation(Station station);
 
+    //查看lost
+    @Select("select * from lost")
+    List<Lost> selectAllLost();
+
 }

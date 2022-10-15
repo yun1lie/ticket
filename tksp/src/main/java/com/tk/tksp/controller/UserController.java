@@ -96,8 +96,14 @@ public class UserController {
 
     //修改车站
     @PostMapping("/updateStation")
-    public int updateStation(@RequestBody Station station){
+    public int updateStation(@RequestBody Station station) {
         return userMapper.updateStation(station);
+    }
+
+    //查看lost
+    @GetMapping("/getAllLost")
+    public List<Lost> getAllLost() {
+        return userMapper.selectAllLost();
     }
 
 }

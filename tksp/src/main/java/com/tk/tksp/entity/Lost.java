@@ -8,4 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lost {
+    private Integer lostID;
+    private String lostName;
+    private String location;
+    private String time;
 }
