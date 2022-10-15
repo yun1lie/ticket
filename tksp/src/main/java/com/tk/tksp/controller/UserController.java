@@ -72,8 +72,32 @@ public class UserController {
     }
 
     @PostMapping("/updateTrain")
-    public int updateTrain(@RequestBody train tr){
+    public int updateTrain(@RequestBody train tr) {
         return userMapper.updateTrain(tr);
+    }
+
+    //查看所有车站
+    @GetMapping("/findAllStation")
+    public List<Station> findAllStation() {
+        return userMapper.findAllStation();
+    }
+
+    //添加车站
+    @PostMapping("/insertStation")
+    public int insertStation(@RequestBody Station station) {
+        return userMapper.insertStation(station);
+    }
+
+    //删除车站
+    @PostMapping("/deleteStation")
+    public int deleteStation(@RequestBody Station station) {
+        return userMapper.deleteStation(station);
+    }
+
+    //修改车站
+    @PostMapping("/updateStation")
+    public int updateStation(@RequestBody Station station){
+        return userMapper.updateStation(station);
     }
 
 }

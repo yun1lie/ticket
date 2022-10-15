@@ -45,4 +45,21 @@ public interface UserMapper {
     //删除车辆
     @Delete("DELETE FROM `ticket`.`train` WHERE `TrainID` = #{TrainID}")
     int deleteTrain(train tr);
+
+    //查看车站
+    @Select("SELECT * FROM station")
+    List<Station> findAllStation();
+
+    //添加车站
+    @Insert("INSERT INTO `ticket`.`station`(`stationName`, `Region`, `City`) VALUES (#{stationName}, #{Region}, #{City})")
+    int insertStation(Station station);
+
+    //删除车站
+    @Delete("DELETE FROM `ticket`.`station` WHERE `stationName` = #{stationName}")
+    int deleteStation(Station station);
+
+    //修改车站
+    @Update("UPDATE `ticket`.`station` SET `Region` = #{Region} ,`City` = #{City} WHERE `stationName` = #{stationName}")
+    int updateStation(Station station);
+
 }

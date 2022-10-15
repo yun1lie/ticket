@@ -35,6 +35,26 @@ const router = new VueRouter({
           path: "/StationManagement",
           component: () => import("@/views/home/StationManagement.vue"),
         },
+        {
+          path: "/viewLost",
+          component: () => import("@/views/lost/viewLost.vue"),
+        },
+        {
+          path: "/manageLost",
+          component: () => import("@/views/lost/manageLost.vue"),
+        },
+        {
+          path: "/addstation",
+          component: () => import("@/views/station/addStation.vue"),
+        },
+        {
+          path: "/deleteStation",
+          component: () => import("@/views/station/deleteStation.vue"),
+        },
+        {
+          path: "/updateStation",
+          component: () => import("@/views/station/updateStation.vue"),
+        },
       ],
     },
     {

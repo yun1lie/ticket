@@ -11,7 +11,7 @@
  Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 14/10/2022 00:57:08
+ Date: 15/10/2022 16:39:24
 */
 
 SET NAMES utf8mb4;
@@ -31,6 +31,23 @@ CREATE TABLE `admin`  (
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES (202210, '123456');
+
+-- ----------------------------
+-- Table structure for lost
+-- ----------------------------
+DROP TABLE IF EXISTS `lost`;
+CREATE TABLE `lost`  (
+  `lostID` int(0) NOT NULL,
+  `lostName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`lostID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of lost
+-- ----------------------------
+INSERT INTO `lost` VALUES (1, 'book', 'newyork', '2022-10-23');
 
 -- ----------------------------
 -- Table structure for passenger
@@ -56,41 +73,18 @@ INSERT INTO `passenger` VALUES (13232, 'alice`', 'female', '115');
 DROP TABLE IF EXISTS `station`;
 CREATE TABLE `station`  (
   `stationName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Province` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Region` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `City` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`stationName`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for stationop
+-- Records of station
 -- ----------------------------
-DROP TABLE IF EXISTS `stationop`;
-CREATE TABLE `stationop`  (
-  `ID` int(0) NOT NULL,
-  `operation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `time` datetime(0) NULL DEFAULT NULL,
-  `operation_pk` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `params` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for ticket
--- ----------------------------
-DROP TABLE IF EXISTS `ticket`;
-CREATE TABLE `ticket`  (
-  `ID` int(0) NOT NULL AUTO_INCREMENT,
-  `money` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `trainId` int(0) NULL DEFAULT NULL,
-  `seat` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of ticket
--- ----------------------------
-INSERT INTO `ticket` VALUES (1, '10', 1, '1');
-INSERT INTO `ticket` VALUES (2, '20', 2, '1');
+INSERT INTO `station` VALUES ('a', 'a', 'a');
+INSERT INTO `station` VALUES ('Gare de Paris-Nord', 'The tenth district of Paris, the island of France, France', 'Paris');
+INSERT INTO `station` VALUES ('Grand Central Terminal', '89 East 42nd Street and Park Avenue, New York, USA', 'New York');
+INSERT INTO `station` VALUES ('New York Pennsylvania Station', 'Midtown Manhattan, New York, USA', 'New York');
 
 -- ----------------------------
 -- Table structure for ticketpassenger
@@ -107,7 +101,7 @@ CREATE TABLE `ticketpassenger`  (
   INDEX `trainId`(`trainId`) USING BTREE,
   CONSTRAINT `ticketpassenger_ibfk_1` FOREIGN KEY (`passengerID`) REFERENCES `passenger` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `ticketpassenger_ibfk_2` FOREIGN KEY (`trainId`) REFERENCES `train` (`TrainID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ticketpassenger
@@ -120,6 +114,8 @@ INSERT INTO `ticketpassenger` VALUES (13, 13232, '100', 1, 'first');
 INSERT INTO `ticketpassenger` VALUES (14, 13232, '100', 1, 'first');
 INSERT INTO `ticketpassenger` VALUES (15, 13232, '70', 2, 'first');
 INSERT INTO `ticketpassenger` VALUES (16, 13232, '100', 1, 'second');
+INSERT INTO `ticketpassenger` VALUES (17, 13232, '101', 1, 'first');
+INSERT INTO `ticketpassenger` VALUES (18, 13232, '85', 3, 'second');
 
 -- ----------------------------
 -- Table structure for train
@@ -142,23 +138,9 @@ CREATE TABLE `train`  (
 -- ----------------------------
 -- Records of train
 -- ----------------------------
-INSERT INTO `train` VALUES (1, '0', 'New York', 'Waston', '2022-11-1', '2022-11-2', '36', '499', 100.00, 35.00);
+INSERT INTO `train` VALUES (1, '0', 'New York', 'Waston', '2022-11-1', '2022-11-2', '35', '499', 101.00, 40.00);
 INSERT INTO `train` VALUES (2, '0', 'London', 'Liverpool', '2022-09-28', '2022-09-28', '34', '100', 70.00, 25.00);
-INSERT INTO `train` VALUES (3, '0', 'Conventry', 'Leeds', '2022-06-24', '2022-06-24', '27', '160', 85.00, 30.00);
-INSERT INTO `train` VALUES (4, '0', 'Manchester', 'Sheffield', '2022-08-23', '2022-08-23', '56', '78', 90.00, 24.00);
-
--- ----------------------------
--- Table structure for trainoperation
--- ----------------------------
-DROP TABLE IF EXISTS `trainoperation`;
-CREATE TABLE `trainoperation`  (
-  `ID` int(0) NOT NULL,
-  `operation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `operationPk` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `params` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+INSERT INTO `train` VALUES (3, '0', 'Conventry', 'Leed', '2022-06-24', '2022-06-24', '27', '159', 85.00, 30.00);
 
 -- ----------------------------
 -- Table structure for user

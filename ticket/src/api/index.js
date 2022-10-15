@@ -29,3 +29,23 @@ export const findOneTrain = (data) => {
 export const updateTrain = (data) => {
   return requests({ url: "/updateTrain", method: "post", data });
 };
+
+//请求车站信息
+export const findAllStation = () => {
+  return requests({ url: "/findAllStation", method: "get" });
+};
+
+//添加车站
+export const insertStation = (data) => {
+  return requests({ url: "/insertStation", method: "post", data });
+};
+
+//删除车站
+export const deleteStation = (data) => {
+  return requests({ url: "/deleteStation", method: "post", data });
+};
+
+//修改车站
+export const updateStation = (data) => {
+  return requests({ url: "/updateStation", method: "post", data });
+};
