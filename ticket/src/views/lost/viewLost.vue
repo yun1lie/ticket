@@ -12,7 +12,14 @@
 </template>
 
 <script>
+import { getLost } from "@/api";
 export default {
+  created() {
+    getLost().then((data) => {
+      console.log(data.data);
+      this.tableData = data.data;
+    });
+  },
   data() {
     return {
       tableData: [],

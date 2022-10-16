@@ -2,7 +2,7 @@
   <div class="adminHome">
     <el-container style="height: 800px">
       <el-aside width="220px">
-        <el-menu :default-openeds="['1', '2']" router>
+        <el-menu :default-openeds="['1', '2', '3']" router>
           <el-submenu index="1">
             <template slot="title"
               ><i class="el-icon-message"></i>management</template
@@ -11,9 +11,6 @@
               <el-menu-item index="TranManagement" router
                 >Train management</el-menu-item
               >
-
-              <el-menu-item index="viewLost">view lost</el-menu-item>
-              <el-menu-item index="manageLost">lost management</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
@@ -26,6 +23,13 @@
             <el-menu-item index="addStation">addStation</el-menu-item>
             <el-menu-item index="deleteStation">deleteStation</el-menu-item>
             <el-menu-item index="updateStation">updateStation</el-menu-item>
+          </el-submenu>
+
+          <el-submenu index="3">
+            <template slot="title"><i class="el-icon-house"></i>lost</template>
+
+            <el-menu-item index="viewLost">view lost</el-menu-item>
+            <el-menu-item index="manageLost">lost management</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>

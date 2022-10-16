@@ -70,6 +70,18 @@ const router = new VueRouter({
           path: "/viewTickets",
           component: () => import("@/views/home/viewTickets.vue"),
         },
+        {
+          path: "/vLost",
+          component: () => import("@/views/lost/viewLost.vue"),
+        },
+        {
+          path: "/mLost",
+          component: () => import("@/views/lost/manageLost.vue"),
+        },
+        {
+          path: "/Scenery",
+          component: () => import("@/views/station/Scenery.vue"),
+        },
       ],
     },
   ],

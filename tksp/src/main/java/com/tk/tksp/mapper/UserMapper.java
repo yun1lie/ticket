@@ -66,4 +66,7 @@ public interface UserMapper {
     @Select("select * from lost")
     List<Lost> selectAllLost();
 
+    //添加丢失物品
+    @Insert("INSERT INTO `ticket`.`lost`(`lostName`, `location`, `time`) VALUES (#{lostName}, #{location},#{time})")
+    int addLost(Lost lost);
 }

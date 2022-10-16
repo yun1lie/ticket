@@ -49,3 +49,13 @@ export const deleteStation = (data) => {
 export const updateStation = (data) => {
   return requests({ url: "/updateStation", method: "post", data });
 };
+
+//查看lost
+export const getLost = () => {
+  return requests({ url: "/getAllLost", method: "get" });
+};
+
+//add lost
+export const addLost = (data) => {
+  return requests({ url: "/addLost", method: "post", data });
+};

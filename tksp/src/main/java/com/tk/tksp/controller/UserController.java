@@ -106,4 +106,10 @@ public class UserController {
         return userMapper.selectAllLost();
     }
 
+    //添加丢失物品
+    @PostMapping("/addLost")
+    public int addLost(@RequestBody Lost lost){
+        return userMapper.addLost(lost);
+    }
+
 }
