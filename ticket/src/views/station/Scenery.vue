@@ -5,19 +5,76 @@
         <div class="card__image-holder">
           <img
             class="card__image"
-            src="https://source.unsplash.com/300x225/?wave"
+            src="@/views/station/pic/binxi.jpeg"
             alt="wave"
           />
         </div>
         <div class="card-title">
-          <a href="#" class="toggle-info btn">
-            <span class="left"></span>
-            <span class="right"></span>
-          </a>
-          <h2>
-            Card title
-            <small>Image from unsplash.com</small>
-          </h2>
+          <h2>Penn Station</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__image-holder">
+          <img
+            class="card__image"
+            src="@/views/station/pic/center.jpeg"
+            alt="wave"
+          />
+        </div>
+        <div class="card-title">
+          <h2>Grand Central Terminal</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__image-holder">
+          <img
+            class="card__image"
+            src="@/views/station/pic/waston.jpeg"
+            alt="wave"
+          />
+        </div>
+        <div class="card-title">
+          <h2>Washington Union Station</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__image-holder">
+          <img
+            class="card__image"
+            src="@/views/station/pic/luoshan.jpeg"
+            alt="wave"
+          />
+        </div>
+        <div class="card-title">
+          <h2>Los Angeles Union Station</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__image-holder">
+          <img
+            class="card__image"
+            src="@/views/station/pic/zjg.jpeg"
+            alt="wave"
+          />
+        </div>
+        <div class="card-title">
+          <h2>Chicago Union Station</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__image-holder">
+          <img
+            class="card__image"
+            src="@/views/station/pic/df.jpeg"
+            alt="wave"
+          />
+        </div>
+        <div class="card-title">
+          <h2>Denver Union Station</h2>
         </div>
       </div>
     </div>
@@ -79,7 +136,8 @@ div.card {
   z-index: 1;
 }
 div.card img {
-  max-width: 300px;
+  width: 300px;
+  height: 225px;
 }
 div.card .card__image-holder {
   background: rgba(0, 0, 0, 0.1);
@@ -87,6 +145,7 @@ div.card .card__image-holder {
   padding-bottom: 75%;
 }
 div.card div.card-title {
+  height: 100px;
   background: #ffffff;
   padding: 6px 15px 10px;
   position: relative;
@@ -119,7 +178,7 @@ div.card div.card-title a.toggle-info span.right {
   transform: rotate(-45deg);
 }
 div.card div.card-title h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.05em;
   margin: 0;

@@ -1,6 +1,6 @@
 <template>
   <div class="tm">
-    车次管理
+    <h1>Tran Management</h1>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="trainID" label="trainID"> </el-table-column>
       <el-table-column prop="trainType" label="trainType" width="130px">

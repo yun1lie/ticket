@@ -13,7 +13,7 @@
         <el-input v-model="form.userID"></el-input>
       </el-form-item>
       <el-form-item label="userKey" prop="userKey">
-        <el-input v-model="form.userKey"></el-input>
+        <el-input v-model="form.userKey" type="password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">login</el-button>
